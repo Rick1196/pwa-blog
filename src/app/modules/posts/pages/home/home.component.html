@@ -1,0 +1,9 @@
+<div class="container mt-3">
+    <div class="card mb-3" *ngFor="let p of posts">
+        <img class="card-img-top" [src]="p.imageCard" alt="Image post" height="300">
+        <div class="card-body">
+            <h5 class="card-title">{{p.name}}</h5>
+            <a [routerLink]="['/posts/post']" routerLinkActive="router-link-active" [queryParams]="{post: p.id}" class="btn btn-primary">See full content</a>
+        </div>
+    </div>
+</div>

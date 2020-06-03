@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="text-center">The anthology of digested knowledge</h4>
+        </div>
+        <div class="card-body" style="padding: 2em;">
+            <div *ngIf="state == 1">
+                <div class="d-flex justify-content-center mb-3">
+                    <button (click)="state = 2" class="btn btn-outline-primary btn-block">Login</button>
+                </div>
+                <div class="d-flex justify-content-center mb-3">
+                    <button (click)="state = 3" class="btn btn-outline-info btn-block">Register</button>
+                </div>
+            </div>
+            <app-login *ngIf="state == 2"></app-login>
+            <app-register *ngIf="state == 3"></app-register>
+        </div>
+    </div>
+</div>

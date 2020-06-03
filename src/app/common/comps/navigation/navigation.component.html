@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" *ngIf="!session;else user">
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/auth/session']" routerLinkActive="router-link-active" >Login <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <a class="navbar-brand" href="#">The anthology of digested knowledge </a>
+    </div>
+</nav>
+
+<ng-template #user>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" (click)="signOut()">Log out <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/posts/home']" routerLinkActive="router-link-active" >Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/posts/create']" routerLinkActive="router-link-active" >Create new post <span class="sr-only">(current)</span></a>
+        </li>
+    </ul>
+</ng-template>

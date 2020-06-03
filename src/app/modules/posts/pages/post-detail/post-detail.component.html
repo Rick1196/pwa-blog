@@ -1,0 +1,19 @@
+<img [src]="post.imagePath" class="img-fluid hero" alt="Responsive image">
+
+<div class="container mt-3">
+    <h1 class="text-center">{{post.name}}</h1>
+    <audio controls autoplay>
+        <source [src]="post.audio" type="audio/mpeg">
+    </audio>
+    <div *ngFor="let f of post.facts" class="mt-2">
+        <h3 class="text-left">{{f.title}}</h3>
+        <p class="text-justify">{{f.content}}</p>
+    </div>
+    <div class="text-center">
+        <video width="400" controls>
+            <source [src]="post.video" type="video/mp4">
+            Your browser does not support HTML video.
+        </video>
+    </div>
+
+</div>
