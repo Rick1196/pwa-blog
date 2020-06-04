@@ -12,8 +12,8 @@
                     <button (click)="state = 3" class="btn btn-outline-info btn-block">Register</button>
                 </div>
             </div>
-            <app-login *ngIf="state == 2"></app-login>
-            <app-register *ngIf="state == 3"></app-register>
+            <app-login *ngIf="state == 2" (cancel)="close($event)"></app-login>
+            <app-register *ngIf="state == 3" (cancel)="close($event)"></app-register>
         </div>
     </div>
 </div>

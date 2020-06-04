@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this._posts.$posts.subscribe({
       next: (v: any) => {
-        this.posts = v.posts;
+        this.posts = v;
+        console.log('home',this.posts)
       }
     });
   }

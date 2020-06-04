@@ -28,4 +28,7 @@
           </div>
         <span *ngIf="loading == false">Login</span>
     </button>
+    <button (click)="return(); loading = true;" class="btn btn-outline-secondary btn-block" [disabled]="loading">
+        <span *ngIf="loading == false">Cancel</span>
+    </button>
 </form>

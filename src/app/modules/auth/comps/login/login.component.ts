@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import {AuthService} from '../../../../common/services/auth.service';
 import {Router} from '@angular/router'
@@ -9,6 +9,7 @@ import {Router} from '@angular/router'
 })
 export class LoginComponent implements OnInit {
 
+  @Output() cancel = new EventEmitter<any>();
   form = new FormGroup({
     email: new FormControl('',Validators.required),
     password: new FormControl('', Validators.required),
@@ -32,6 +33,10 @@ export class LoginComponent implements OnInit {
       this.loading = false;
       this.errorResponse = "Wrong credentials, try again."
     })
+  }
+
+  return(){
+    this.cancel.emit(0);
   }
 
 

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AuthService } from '../../../../common/services/auth.service';
+import { Router } from '@angular/router'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {ConfirmedValidator} from './confirmed.validator';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -7,9 +10,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  @Output() cancel = new EventEmitter<any>();
+  form = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required]),
+    username: new FormControl('', [Validators.required])
+  });
+
+  errorResponse: string;
+  loading: boolean = false;
+
+  constructor(private _auth: AuthService, private _router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  submit() {
+    let data = this.form.value;
+    data.confirmPassword = data.password;
+    this._auth.signUp(data).then(data => {
+      console.log('auth', data);
+      this._router.navigate(['posts/home'])
+      this.loading = false;
+    }).catch(error => {
+      console.error(error);
+      this.loading = false;
+      this.errorResponse = "Wrong credentials, try again."
+    })
+  }
+
+  return() {
+    this.cancel.emit(0);
   }
 
 }

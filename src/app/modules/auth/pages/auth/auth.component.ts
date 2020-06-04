@@ -13,4 +13,8 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  close($event:any){
+    this.state = 1;
+  }
+
 }

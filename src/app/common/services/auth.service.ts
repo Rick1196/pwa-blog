@@ -41,7 +41,12 @@ export class AuthService {
   signUp(signupData: any): Promise<any> {
     return new Promise((resolve, reject) => {
       this._http.post(`${environment.baseUrl}/signUp`, signupData).subscribe(
-        data => resolve(data),
+        (data:any) => {
+          localStorage.setItem("sessionid", data.token)
+          this.sessionStatus.isLoggedIn = true;
+          this.$session.next(this.sessionStatus);
+          resolve(data)
+        },
         error => reject(error)
       )
     })

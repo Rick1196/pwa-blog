@@ -15,7 +15,9 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this._router.queryParams.subscribe(params => {
       this.postId = params.post;
-      this.post = this._posts.getPost(this.postId);
+      this.post = this._posts.getPost(String(this.postId));
+      console.log('detail',this.post);
+      
     })
   }
 
