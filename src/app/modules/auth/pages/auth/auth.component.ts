@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  state:number = 1;
+  state = 1;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  close($event:any){
+  close($event: any) {
     this.state = 1;
   }
 

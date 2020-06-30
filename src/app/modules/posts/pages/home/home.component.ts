@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PostsService} from '../../../services/posts.service';
+import { PostsService } from '../../../services/posts.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,14 +7,14 @@ import {PostsService} from '../../../services/posts.service';
 })
 export class HomeComponent implements OnInit {
 
-  posts:any;
-  constructor(private _posts:PostsService) { }
+  posts: any;
+  constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
-    this._posts.$posts.subscribe({
+    this.postsService.$posts.subscribe({
       next: (v: any) => {
         this.posts = v;
-        console.log('home',this.posts)
+        console.log('home', this.postsService);
       }
     });
   }

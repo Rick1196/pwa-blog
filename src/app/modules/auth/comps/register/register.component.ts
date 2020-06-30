@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../../../common/services/auth.service';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {ConfirmedValidator} from './confirmed.validator';
+import { ConfirmedValidator } from './confirmed.validator';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,25 +18,25 @@ export class RegisterComponent implements OnInit {
   });
 
   errorResponse: string;
-  loading: boolean = false;
+  loading = false;
 
-  constructor(private _auth: AuthService, private _router: Router) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   submit() {
-    let data = this.form.value;
+    const data = this.form.value;
     data.confirmPassword = data.password;
-    this._auth.signUp(data).then(data => {
-      console.log('auth', data);
-      this._router.navigate(['posts/home'])
+    this.auth.signUp(data).then(info => {
+      // console.log('auth', data);
+      this.router.navigate(['posts/home']);
       this.loading = false;
     }).catch(error => {
       console.error(error);
       this.loading = false;
-      this.errorResponse = "Wrong credentials, try again."
-    })
+      this.errorResponse = 'Wrong credentials, try again.';
+    });
   }
 
   return() {

@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import {AuthService} from '../../../../common/services/auth.service';
-import {Router} from '@angular/router'
+import { AuthService } from '../../../../common/services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,31 +11,31 @@ export class LoginComponent implements OnInit {
 
   @Output() cancel = new EventEmitter<any>();
   form = new FormGroup({
-    email: new FormControl('',Validators.required),
+    email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
-  errorResponse:string;
-  loading:boolean = false;
+  errorResponse: string;
+  loading = false;
 
-  constructor(private _auth:AuthService, private _router:Router) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  submit(){
+  submit() {
     console.log(this.form.value);
-    this._auth.login(this.form.value).then(data=>{
-      console.log('auth',data);
-      this._router.navigate(['posts/home'])
+    this.auth.login(this.form.value).then(data => {
+      console.log('auth', data);
+      this.router.navigate(['posts/home']);
       this.loading = false;
-    }).catch(error=>{
+    }).catch(error => {
       console.error(error);
       this.loading = false;
-      this.errorResponse = "Wrong credentials, try again."
-    })
+      this.errorResponse = 'Wrong credentials, try again.';
+    });
   }
 
-  return(){
+  return() {
     this.cancel.emit(0);
   }
 

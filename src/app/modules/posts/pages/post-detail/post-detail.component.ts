@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {PostsService} from '../../../services/posts.service';
+import { ActivatedRoute } from '@angular/router';
+import { PostsService } from '../../../services/posts.service';
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
@@ -8,17 +8,17 @@ import {PostsService} from '../../../services/posts.service';
 })
 export class PostDetailComponent implements OnInit {
 
-  postId:number;
-  post:any;
-  constructor(private _router:ActivatedRoute, private _posts:PostsService) { }
+  postId: number;
+  post: any;
+  constructor(private router: ActivatedRoute, private posts: PostsService) { }
 
   ngOnInit(): void {
-    this._router.queryParams.subscribe(params => {
+    this.router.queryParams.subscribe(params => {
       this.postId = params.post;
-      this.post = this._posts.getPost(String(this.postId));
-      console.log('detail',this.post);
-      
-    })
+      this.post = this.posts.getPost(String(this.postId));
+      console.log('detail', this.post);
+
+    });
   }
 
 }

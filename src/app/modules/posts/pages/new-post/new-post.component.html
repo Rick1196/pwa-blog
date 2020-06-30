@@ -1,44 +1,49 @@
 <div class="container mt-3">
-    <form [formGroup]="form">
-        <div class="form-group">
-            <label for="title">Post Title</label>
-            <input type="text" [ngClass]="(form.controls.title.invalid == true)?'is-invalid':''" formControlName="title"
-                class="form-control" placeholder="Title">
-            <div class="invalid-feedback">
-                Post title is required
+    <div class="card" style="padding: 2em;">
+        <form [formGroup]="form">
+            <div class="form-group">
+                <label for="title">Post Title</label>
+                <input type="text" [ngClass]="(form.controls.title.invalid == true)?'is-invalid':''"
+                    formControlName="title" class="form-control" placeholder="Title">
+                <div class="invalid-feedback">
+                    Post title is required
+                </div>
             </div>
-        </div>
-        <label> Images</label>
-        <div class="input-group">
-            <input type="text" [ngClass]="(form.controls.imageCard.invalid == true)?'is-invalid':''"
-                formControlName="imageCard" aria-label="First name" class="form-control" placeholder="Image card link">
-            <input type="text" [ngClass]="(form.controls.imagePath.invalid == true)?'is-invalid':''"
-                formControlName="imagePath" aria-label="Last name" class="form-control" placeholder="Image banner link">
-            <div class="invalid-feedback">
-                Images are required
+            <label> Images</label>
+            <div class="input-group">
+                <input type="text" [ngClass]="(form.controls.imageCard.invalid == true)?'is-invalid':''"
+                    formControlName="imageCard" aria-label="First name" class="form-control"
+                    placeholder="Image card link">
+                <input type="text" [ngClass]="(form.controls.imagePath.invalid == true)?'is-invalid':''"
+                    formControlName="imagePath" aria-label="Last name" class="form-control"
+                    placeholder="Image banner link">
+                <div class="invalid-feedback">
+                    Images are required
+                </div>
             </div>
-        </div>
-        <label>Media(Optional)</label>
-        <div class="input-group">
-            <input type="text" formControlName="audio" aria-label="First name" class="form-control"
-                placeholder="Audio link">
-            <input type="text" formControlName="video" aria-label="Last name" class="form-control"
-                placeholder="Video link">
-        </div>
-        <div class="form-group mb-3">
-            <label for="title">Post body</label>
-            <ckeditor [ngClass]="(form.controls.body.invalid == true)?'is-invalid':''" [editor]="Editor"
-                formControlName="body" data="<p>Here goes your knowledge</p>"></ckeditor>
-            <div class="invalid-feedback">
-                Body post is required
+            <label>Media(Optional)</label>
+            <div class="input-group">
+                <input type="text" formControlName="audio" aria-label="First name" class="form-control"
+                    placeholder="Audio link">
+                <input type="text" formControlName="video" aria-label="Last name" class="form-control"
+                    placeholder="Video link">
             </div>
-        </div>
-        <button class="btn btn-outline-info btn-block" [disabled]="form.valid == false || loading == true"
-            (click)="loading = true;submit();">
-            <div class="spinner-border" role="status" *ngIf="loading == true">
-                <span class="sr-only">Loading...</span>
+            <div class="form-group mb-3">
+                <label for="title">Post body</label>
+                <ckeditor [ngClass]="(form.controls.body.invalid == true)?'is-invalid':''" [editor]="Editor"
+                    formControlName="body" data="<p>Here goes your knowledge</p>"></ckeditor>
+                <div class="invalid-feedback">
+                    Body post is required
+                </div>
             </div>
-            Save post
-        </button>
-    </form>
+            <button class="btn btn-outline-info btn-block" [disabled]="form.valid == false || loading == true"
+                (click)="loading = true;submit();">
+                <div class="spinner-border" role="status" *ngIf="loading == true">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                Save post
+            </button>
+        </form>
+    </div>
+
 </div>

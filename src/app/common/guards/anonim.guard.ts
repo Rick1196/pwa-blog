@@ -9,8 +9,8 @@ export class AnonimGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      let session = localStorage.getItem('sessionid');
-      return (session != null)?false:true;
+    const session = localStorage.getItem('sessionid');
+    return (session != null) ? false : true;
   }
-  
+
 }
